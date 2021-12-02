@@ -1,4 +1,4 @@
-specVersion: 0.0.4
+specVersion: 0.0.2
 description: UnoRe is a decentralized protocol for reinsurance.
 repository: https://github.com/snowwhitedev/staking-subgraph
 schema:
@@ -13,7 +13,7 @@ dataSources:
       startBlock: 11072989
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.6
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       file: ./src/mappings/cohort.ts
       entities:

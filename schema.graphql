@@ -21,7 +21,7 @@ type Stake @entity {
   blockNumber: BigInt!
   staker: String!
   pool: String!
-  amount: BigDecimal
+  amount: BigDecimal!
 }
 
 type User @entity {
@@ -36,7 +36,7 @@ type StakePosition @entity {
   pool: String!
   staker: String!
   stakeBalance: BigDecimal!
-  isStaking: Boolean
+  isStaking: Boolean!
 }
 
 # LeaveFromPool
@@ -48,7 +48,7 @@ type Withdraw @entity {
   # TODO - Bytes type?
   pool: String!
   to: String!
-  amount: BigDecimal
+  amount: BigDecimal!
 }
 
 type Claim @entity {
@@ -58,7 +58,7 @@ type Claim @entity {
   blockNumber: BigInt!
   claimer: String!
   protocolIdx: BigInt
-  amount: BigDecimal
+  amount: BigDecimal!
 }
 
 type Premium @entity {
@@ -74,15 +74,15 @@ type Premium @entity {
 type PremiumPosition @entity {
   # protocol idx
   id: ID!
-  premiumBalance: BigDecimal
+  premiumBalance: BigDecimal!
 }
 
 type Transaction @entity {
   id: ID! #txn hash
   blockNumber: BigInt!
   timestamp: BigInt!
-  stakes: [Stake]!
-  withdraws: [Withdraw]!
-  claims: [Claim]!
-  premiums: [Premium]!
+  stakes: [Stake!]
+  withdraws: [Withdraw!]
+  claims: [Claim!]
+  premiums: [Premium!]
 }
