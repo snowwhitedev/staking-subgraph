@@ -1,0 +1,88 @@
+type Protocol @entity {
+  id: ID!
+  cohort: String!
+  protocolIdx: BigInt!
+}
+
+type RiskPool @entity {
+  id: ID!
+  timestamp: BigInt
+  blockNumber: BigInt!
+  cohort: String!
+  pool: String!
+  totalSupply: BigDecimal
+}
+
+# It should be Mint event in RiskPool/UnoERC20?
+type Stake @entity {
+  id: ID!
+  transaction: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  staker: String!
+  pool: String!
+  amount: BigDecimal
+}
+
+type User @entity {
+  id: ID!
+  stakePositions: [StakePosition!]
+  totalStakeBalance: BigDecimal!
+}
+
+type StakePosition @entity {
+  # pool address - user address
+  id: ID!
+  pool: String!
+  staker: String!
+  stakeBalance: BigDecimal!
+  isStaking: Boolean
+}
+
+# LeaveFromPool
+type Withdraw @entity {
+  id: ID!
+  transaction: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  # TODO - Bytes type?
+  pool: String!
+  to: String!
+  amount: BigDecimal
+}
+
+type Claim @entity {
+  id: ID!
+  transaction: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  claimer: String!
+  protocolIdx: BigInt
+  amount: BigDecimal
+}
+
+type Premium @entity {
+  id: ID!
+  transaction: String!
+  timestamp: BigInt!
+  blockNumber: BigInt!
+  cohort: String!
+  protocolIdx: BigInt!
+  amount: BigDecimal!
+}
+
+type PremiumPosition @entity {
+  # protocol idx
+  id: ID!
+  premiumBalance: BigDecimal
+}
+
+type Transaction @entity {
+  id: ID! #txn hash
+  blockNumber: BigInt!
+  timestamp: BigInt!
+  stakes: [Stake]!
+  withdraws: [Withdraw]!
+  claims: [Claim]!
+  premiums: [Premium]!
+}

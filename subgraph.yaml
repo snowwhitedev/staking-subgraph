@@ -1,0 +1,35 @@
+specVersion: 0.0.2
+description: UnoRe is a decentralized protocol for reinsurance.
+repository: https://github.com/Uniswap/uniswap-v2-subgraph
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Cohort
+    network: bsc
+    source:
+      address: '0xa7c8Dd26eB99534Dd848278e53CB7e260Ea83CE1'
+      abi: Cohort
+      startBlock: 11072989
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.3
+      language: wasm/assemblyscript
+      file: ./src/mappings/cohort.ts
+      entities:
+        - Stake
+        - RiskPool
+      abis:
+        - name: Cohort
+          file: ./abis/cohort.json
+      eventHandlers:
+        - event: RiskPoolCreated(indexed address,indexed address)
+          handler: handleRiskPool
+        - event: StakedInPool(indexed address,indexed address,uint256)
+          handler: handleStakedInPool
+        - event: LeftPool(indexed address,indexed address)
+          handler: handleLeftPool
+        - event: ClaimPaid(indexed address,uint256,uint256)
+          handler: handleClaim
+        - event: PremiumDeposited(indexed address,uint16,uint256)
+          handler: handlePremiumDeposit
