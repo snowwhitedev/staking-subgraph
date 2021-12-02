@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 description: UnoRe is a decentralized protocol for reinsurance.
-repository: https://github.com/Uniswap/uniswap-v2-subgraph
+repository: https://github.com/snowwhitedev/staking-subgraph
 schema:
   file: ./schema.graphql
 dataSources:
