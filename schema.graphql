@@ -81,6 +81,7 @@ type Transaction @entity {
   id: ID! #txn hash
   blockNumber: BigInt!
   timestamp: BigInt!
+  from: String!
   stakes: [Stake!]
   withdraws: [Withdraw!]
   claims: [Claim!]

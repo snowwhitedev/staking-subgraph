@@ -22,6 +22,7 @@ export function handleStakedInPool(event: StakedInPool): void {
     transaction = new Transaction(transactionHash)
     transaction.blockNumber = event.block.number
     transaction.timestamp = event.block.timestamp
+    transaction.from = event.transaction.from.toHexString()
     transaction.stakes = []
     transaction.withdraws = []
     transaction.claims = []
@@ -84,6 +85,7 @@ export function handleLeftPool(event: LeftPool): void {
     transaction = new Transaction(transactionHash)
     transaction.blockNumber = event.block.number
     transaction.timestamp = event.block.timestamp
+    transaction.from = event.transaction.from.toHexString()
     transaction.stakes = []
     transaction.withdraws = []
     transaction.claims = []
@@ -124,6 +126,7 @@ export function handleClaim(event: ClaimPaid): void {
     transaction = new Transaction(transactionHash)
     transaction.blockNumber = event.block.number
     transaction.timestamp = event.block.timestamp
+    transaction.from = event.transaction.from.toHexString()
     transaction.stakes = []
     transaction.withdraws = []
     transaction.claims = []
@@ -164,6 +167,7 @@ export function handlePremiumDeposit(event: PremiumDeposited): void {
     transaction = new Transaction(transactionHash)
     transaction.blockNumber = event.block.number
     transaction.timestamp = event.block.timestamp
+    transaction.from = event.transaction.from.toHexString()
     transaction.stakes = []
     transaction.withdraws = []
     transaction.claims = []
